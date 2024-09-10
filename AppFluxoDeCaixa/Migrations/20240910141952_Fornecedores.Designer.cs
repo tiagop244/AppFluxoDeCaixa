@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppFluxoDeCaixa.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240904115737_ClientesNew")]
-    partial class ClientesNew
+    [Migration("20240910141952_Fornecedores")]
+    partial class Fornecedores
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,6 +98,41 @@ namespace AppFluxoDeCaixa.Migrations
                     b.HasKey("ClientesId");
 
                     b.ToTable("1234Clientes", (string)null);
+                });
+
+            modelBuilder.Entity("AppFluxoDeCaixa.Models.Fornecedor", b =>
+                {
+                    b.Property<Guid>("FornecedorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CNPJ")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
+                    b.HasKey("FornecedorId");
+
+                    b.ToTable("Fornecedor", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
