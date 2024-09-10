@@ -1,0 +1,85 @@
+﻿@model AppFluxoDeCaixa.Models.Fornecedor
+
+@{
+    ViewData["Title"] = "Editar Fornecedores";
+}
+
+<h1>Edit</h1>
+
+<h4>Fornecedor</h4>
+<hr />
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="FornecedorId" />
+    <div class="form-group">
+        <label asp-for="FornecedorId" class="control-label"></label>
+        <input asp-for="FornecedorId" class="form-control" />
+        <span asp-validation-for="FornecedorId" class="text-danger"></span>
+    </div>
+    </div>
+    <div class="col-12 col-md mt-2">
+        <div class="form-group">
+            <label asp-for="CNPJ" class="control-label"></label>
+            <input asp-for="CNPJ" class="form-control" />
+            <span asp-validation-for="CNPJ" class="text-danger"></span>
+        </div>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-8 mt-2">
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-3 mt-2">
+            <div class="form-group">
+                <label asp-for="Telefone" class="control-label"></label>
+                <input asp-for="Telefone" class="form-control" />
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-12 col-md mt-2">
+            <div class="form-group">
+                <label asp-for="DataCadastro" class="control-label"></label>
+                <input readonly="readonly" asp-for="DataCadastro" class="form-control" />
+                <span asp-validation-for="DataCadastro" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-1 mt-2">
+            <label>Ativo?</label>
+            <div class="form-check form-switch form-control-lg">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwicthCheckDefault" asp-for="DataCadastro"> SIM
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <a class="btn btn-outline-secondary w-100 mt-4" asp-action="Index">Voltar</a>
+        </div>
+
+        <div class="col-4">
+        </div>
+
+        <div class="col-4">
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-sucess w-100 mt-4" />
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
